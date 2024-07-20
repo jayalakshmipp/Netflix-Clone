@@ -5,5 +5,8 @@ class ColorConstants {
   static Color mainWhite = Color(0xffFFFFFF);
   static Color primaryRed = Color(0xffE50914);
   static Color green = Color(0xff008000);
+  static Color grey =  Color(0xff808080);
+  static Color blue =  Color(0xff87CEEB);
+  static Color purple =  Color(0xffCBC3E3);
 
 }

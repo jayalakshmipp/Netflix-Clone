@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:netflix_clone_app/dammy_db.dart';
 import 'package:netflix_clone_app/utils/constants/color_constants.dart';
 import 'package:netflix_clone_app/utils/constants/image_constants.dart';
+import 'package:netflix_clone_app/view/home_screen/widgets/movies_builder_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,12 +12,42 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConstants.mainBlack,
-      body: Column(children: [
-        _posterSection(),
-        SizedBox(height: 11,),
-        _buildPlaySection(),
-        SizedBox( height: 40,),
-      ]),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          _posterSection(),
+          SizedBox(height: 11,),
+          _buildPlaySection(),
+          SizedBox( height: 40,),
+          MoviesBuilderWidget(
+            customWidth: 102,
+            isCircle: true,
+            posterImages: DummyDb.MoviesBuildList1
+            ),
+          MoviesBuilderWidget(
+            haveInfoCard: true,
+            posterImages: DummyDb.MoviesBuildList2
+            ),
+          MoviesBuilderWidget(
+            posterImages: DummyDb.MoviesBuildList1
+            ),
+          MoviesBuilderWidget(
+            customHeight: 251,
+            customWidth: 154,
+            posterImages: DummyDb.MoviesBuildList2
+          ),
+          MoviesBuilderWidget(
+            posterImages: DummyDb.MoviesBuildList1
+            ),
+            MoviesBuilderWidget(
+            posterImages: DummyDb.MoviesBuildList2
+            ),
+            MoviesBuilderWidget(
+            posterImages: DummyDb.MoviesBuildList1
+            ),
+        ]),
+      ),
     );
   }
 
@@ -32,7 +64,7 @@ class HomeScreen extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "My kist",
+            "My List",
             style: TextStyle(
               color: ColorConstants.mainWhite,
               fontSize: 14,
@@ -45,7 +77,7 @@ class HomeScreen extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(vertical: 7, horizontal: 15),
           decoration: BoxDecoration(
-              color: Colors.grey, borderRadius: BorderRadius.circular(6)),
+              color: ColorConstants.mainWhite, borderRadius: BorderRadius.circular(6)),
           child: Row(
             children: [
               Icon(
@@ -59,7 +91,7 @@ class HomeScreen extends StatelessWidget {
               Text(
                 "Play",
                 style: TextStyle(
-                  color: ColorConstants.mainWhite,
+                  color: ColorConstants.mainBlack,
                   fontSize: 14,
                 ),
               )
