@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_app/utils/constants/image_constants.dart';
-import 'package:netflix_clone_app/view/home_screen/home_screen.dart';
 import 'package:netflix_clone_app/view/use_name_screen/user_name_screen.dart';
 
 class SpalshScreen extends StatefulWidget {

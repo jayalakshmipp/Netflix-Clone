@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone_app/dammy_db.dart';
 import 'package:netflix_clone_app/utils/constants/color_constants.dart';
 import 'package:netflix_clone_app/utils/constants/image_constants.dart';
+import 'package:netflix_clone_app/view/home_screen/home_screen.dart';
 
 class UserNameScreen extends StatelessWidget {
   const UserNameScreen({super.key});
@@ -24,20 +25,74 @@ class UserNameScreen extends StatelessWidget {
             )
           ],
         ),
-        body: GridView.builder(
-            itemCount: DummyDb.usersList.length,
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-            itemBuilder: (context, index) {
-              return Container(
+        body: Center(
+            child: GridView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 75),
+          shrinkWrap: true,
+          itemCount: DummyDb.usersList.length + 1,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              mainAxisExtent: 130),
+          itemBuilder: (context, index) {
+            if (index < DummyDb.usersList.length) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HomeScreen())); //to return
+                },
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Image.asset(DummyDb.usersList[index]["imagePath"]!),
-                ],
-              ),
-          );
-        }
-      )
-    );
+                    Image.asset(
+                      DummyDb.usersList[index]["imagePath"].toString(),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      DummyDb.usersList[index]["name"].toString(),
+                      style: TextStyle(color: Colors.white, fontSize: 13.25),
+                    )
+                  ],
+                ),
+              );
+            } else {
+              return InkWell(
+                onTap: () {
+                  DummyDb.usersList.add(
+                      {"imagePath": ImageConstants.USER1_PNG, "name": "mnop"});
+
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      backgroundColor: ColorConstants.green,
+                      content: Text("Feature not available")));
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Image.asset(ImageConstants.ADD_PNG),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(ImageConstants.ADD_PNG),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      "Add Profile",
+                      style: TextStyle(
+                        color: ColorConstants.mainWhite,
+                        fontSize: 13.25,
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }
+          },
+        )));
   }
 }
