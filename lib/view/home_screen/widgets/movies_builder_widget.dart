@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone_app/utils/constants/color_constants.dart';
 
-class MoviesBuilderWidget extends StatelessWidget {
-  const MoviesBuilderWidget({
-    super.key,this.isCircle = false,  
+class MoviesCardBuilderWidget extends StatelessWidget {
+  const MoviesCardBuilderWidget({
+    super.key,
+    this.isCircle = false,
     this.customHeight = 161,
-    this.customWidth = 103, 
-    required this.posterImages, 
-    this.haveInfoCard = false,}
-    );
-  final bool isCircle;
+    this.customWidth = 103,
+    required this.posterImages,
+    this.haveInfoCard = false,
+  });
+  final bool isCircle; //  true for making items circular
   final double customHeight;
   final double customWidth;
   final List<String> posterImages;
@@ -34,18 +35,16 @@ class MoviesBuilderWidget extends StatelessWidget {
         SizedBox(
           height: isCircle ? customWidth : customHeight,
           child: ListView.separated(
-            padding: EdgeInsets.symmetric(horizontal: 12,),
+            padding: EdgeInsets.symmetric(horizontal: 12),
             itemCount: posterImages.length,
             scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
             itemBuilder: (context, index) => Container(
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(posterImages[index])),
-                color: Colors.orange,
-                shape: isCircle ? BoxShape.circle : BoxShape.rectangle
-              ),
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(posterImages[index])),
+                  color: Colors.orange,
+                  shape: isCircle ? BoxShape.circle : BoxShape.rectangle),
               height: customHeight,
               width: customWidth,
               child: Visibility(
@@ -53,37 +52,38 @@ class MoviesBuilderWidget extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                  Container(
-                    height: 3,
-                    color: ColorConstants.grey,
-                  ),
-                  Container(
-                    padding: EdgeInsetsDirectional.symmetric(vertical: 7),
-                    color: ColorConstants.mainBlack,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Icon(
-                          Icons.info_outline,
-                          color: ColorConstants.mainWhite
-                        ),
-                        Icon(
-                          Icons.more_vert,
-                          color: ColorConstants.mainWhite
-                        )
-                    
-                      ],
+                    Container(
+                      height: 3,
+                      color: Colors.grey,
                     ),
-                  )
-                ],),
-              )
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 7),
+                      color: ColorConstants.mainBlack,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Icon(
+                            Icons.info_outline,
+                            color: Colors.white,
+                          ),
+                          Icon(
+                            Icons.more_vert,
+                            color: Colors.white,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
             separatorBuilder: (context, index) => SizedBox(
-            width: 7,),
+              width: 7,
+            ),
           ),
         ),
         SizedBox(height: 22),
-       ] //SizedBox
+      ],
     );
   }
 }

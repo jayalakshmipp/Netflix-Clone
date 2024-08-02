@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone_app/dammy_db.dart';
 import 'package:netflix_clone_app/utils/constants/color_constants.dart';
+
 
 class NewArrivalCard extends StatelessWidget {
   const NewArrivalCard({
-    super.key, required this. imageUrl,
+    super.key,
+    required this.imageUrl,
   });
   final String imageUrl;
 
@@ -18,38 +19,27 @@ class NewArrivalCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(2),
             child: Image.network(
-            fit: BoxFit.cover,
-            height: 55,
-            width: 113,
-           imageUrl
+                fit: BoxFit.cover, height: 55, width: 113, imageUrl),
           ),
-          ),
-          SizedBox(
-            width: 30,
-          ),
+          SizedBox(width: 30),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "New Arrival",
-                style: TextStyle(
-                  color: ColorConstants.mainWhite,
-                  fontSize: 14
-                )
+                style: TextStyle(color: ColorConstants.mainWhite, fontSize: 14),
               ),
-                Text(
-                "E1 Chapo",
+              Text(
+                "El Chapo",
                 style: TextStyle(
-                  color: ColorConstants.mainWhite.withOpacity(.83),
-                  fontSize: 14
-                )
-                ),
-                Text(
-                "Nov 4",
+                    color: ColorConstants.mainWhite.withOpacity(.83),
+                    fontSize: 14),
+              ),
+              Text(
+                "Nov 6",
                 style: TextStyle(
-                  color: ColorConstants.mainWhite.withOpacity(.47),
-                  fontSize: 10,
-                ),
+                    color: ColorConstants.mainWhite.withOpacity(.47),
+                    fontSize: 10),
               )
             ],
           )

@@ -5,6 +5,7 @@ import 'package:netflix_clone_app/utils/constants/color_constants.dart';
 import 'package:netflix_clone_app/utils/constants/image_constants.dart';
 import 'package:netflix_clone_app/view/home_screen/widgets/movies_builder_widget.dart';
 
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -16,41 +17,38 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          _posterSection(),
-          SizedBox(height: 11,),
-          _buildPlaySection(),
-          SizedBox( height: 40,),
-          
-          MoviesBuilderWidget(
-            customWidth: 102,
-            isCircle: true,
-            posterImages: DummyDb.MoviesBuildList1
+            _buildMoviePosterSection(),
+            SizedBox(height: 11),
+            _buildPlaySection(),
+            SizedBox(height: 40),
+            MoviesCardBuilderWidget(
+              customWidth: 102,
+              isCircle: true,
+              posterImages: DummyDb.MoviesBuildList1,
             ),
-          
-          MoviesBuilderWidget(
-            haveInfoCard: true,
-            posterImages: DummyDb.MoviesBuildList2
+            MoviesCardBuilderWidget(
+              haveInfoCard: true,
+              posterImages: DummyDb.MoviesBuildList2,
             ),
-         
-          MoviesBuilderWidget(
-            posterImages: DummyDb.MoviesBuildList1
+            MoviesCardBuilderWidget(
+              posterImages: DummyDb.MoviesBuildList1,
             ),
-          
-          MoviesBuilderWidget(
-            customHeight: 251,
-            customWidth: 154,
-            posterImages: DummyDb.MoviesBuildList2
-          ),
-          MoviesBuilderWidget(
-            posterImages: DummyDb.MoviesBuildList1
+            MoviesCardBuilderWidget(
+              posterImages: DummyDb.MoviesBuildList2,
+              customHeight: 251,
+              customWidth: 154,
             ),
-            MoviesBuilderWidget(
-            posterImages: DummyDb.MoviesBuildList2
+            MoviesCardBuilderWidget(
+              posterImages: DummyDb.MoviesBuildList1,
             ),
-            MoviesBuilderWidget(
-            posterImages: DummyDb.MoviesBuildList1
+            MoviesCardBuilderWidget(
+              posterImages: DummyDb.MoviesBuildList1,
             ),
-        ]),
+            MoviesCardBuilderWidget(
+              posterImages: DummyDb.MoviesBuildList2,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -59,29 +57,31 @@ class HomeScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Column(children: [
-          Icon(
-            Icons.add,
-            color: ColorConstants.mainWhite,
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            "My List",
-            style: TextStyle(
+        Column(
+          children: [
+            Icon(
+              Icons.add,
               color: ColorConstants.mainWhite,
-              fontSize: 14,
             ),
-          )
-        ]),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              "My List",
+              style: TextStyle(
+                color: ColorConstants.mainWhite,
+                fontSize: 14,
+              ),
+            )
+          ],
+        ),
         SizedBox(
           width: 42,
         ),
         Container(
           padding: EdgeInsets.symmetric(vertical: 7, horizontal: 15),
           decoration: BoxDecoration(
-              color: ColorConstants.mainWhite, borderRadius: BorderRadius.circular(6)),
+              color: Colors.grey, borderRadius: BorderRadius.circular(6)),
           child: Row(
             children: [
               Icon(
@@ -96,6 +96,7 @@ class HomeScreen extends StatelessWidget {
                 "Play",
                 style: TextStyle(
                   color: ColorConstants.mainBlack,
+                  fontWeight: FontWeight.bold,
                   fontSize: 14,
                 ),
               )
@@ -107,37 +108,38 @@ class HomeScreen extends StatelessWidget {
         ),
         Column(
           children: [
-          Icon(
-            Icons.info_outline,
-            color: ColorConstants.mainWhite,
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            "Info",
-            style: TextStyle(
+            Icon(
+              Icons.info_outline,
               color: ColorConstants.mainWhite,
-              fontSize: 14,
             ),
-          )
-        ]),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              "Info",
+              style: TextStyle(
+                color: ColorConstants.mainWhite,
+                fontSize: 14,
+              ),
+            )
+          ],
+        ),
       ],
     );
   }
 
-  Widget _posterSection() {
+  Widget _buildMoviePosterSection() {
     return Stack(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 24),
           decoration: BoxDecoration(
               image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(ImageConstants.POSTER_JPG))),
+                  image: AssetImage(ImageConstants.POSTER_JPG))),
           height: 415,
         ),
         Container(
+          padding: EdgeInsets.symmetric(horizontal: 24),
           height: 415,
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -152,9 +154,9 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset(ImageConstants.NF_LOGO_PNG),
+                    Image.asset(ImageConstants.NF_LOGO_PNG ),
                     Text(
-                      "TV Shows",
+                      "TV shows",
                       style: TextStyle(
                           fontSize: 18, color: ColorConstants.mainWhite),
                     ),
@@ -167,7 +169,7 @@ class HomeScreen extends StatelessWidget {
                       "My List",
                       style: TextStyle(
                           fontSize: 18, color: ColorConstants.mainWhite),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -179,17 +181,17 @@ class HomeScreen extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    "#2 in India today",
+                    "#2 in Nigeria Today",
                     style: TextStyle(
                         fontSize: 14,
                         color: ColorConstants.mainWhite,
                         fontWeight: FontWeight.bold),
-                  )
+                  ),
                 ],
               )
             ],
           ),
-        ),
+        )
       ],
     );
   }
