@@ -37,5 +37,15 @@ class DummyDb {
     "https://i.pinimg.com/236x/29/cc/59/29cc59b0956ecd79f8fb475a925db6ec.jpg",
     "https://i.pinimg.com/236x/e4/d8/74/e4d874e42a066ea95711e7befcbe76ea.jpg",
     "https://i.pinimg.com/236x/ec/fd/30/ecfd309a323103b168be05b9d1a98df3.jpg",
+    "https://i.pinimg.com/236x/f9/f4/0e/f9f40eda4f4571a5a4d4a7e0db5701cf.jpg",
+    "https://i.pinimg.com/236x/07/d2/d1/07d2d16a867f19de142ac54cf74dfb5a.jpg",
   ];
+
+   static const List<String> newArrivalCard = [
+    "https://i.pinimg.com/236x/1f/90/10/1f9010c35e875f23decafc90da51ec69.jpg",
+    
+    "https://i.pinimg.com/236x/c4/fb/e9/c4fbe9d62884b6fba90f32dc28a5ee7e.jpg",
+    "https://i.pinimg.com/474x/c4/d8/00/c4d8000575abe18d8730fe99438c27df.jpg",
+  
+   ];
 }

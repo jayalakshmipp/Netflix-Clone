@@ -20,18 +20,22 @@ class HomeScreen extends StatelessWidget {
           SizedBox(height: 11,),
           _buildPlaySection(),
           SizedBox( height: 40,),
+          
           MoviesBuilderWidget(
             customWidth: 102,
             isCircle: true,
             posterImages: DummyDb.MoviesBuildList1
             ),
+          
           MoviesBuilderWidget(
             haveInfoCard: true,
             posterImages: DummyDb.MoviesBuildList2
             ),
+         
           MoviesBuilderWidget(
             posterImages: DummyDb.MoviesBuildList1
             ),
+          
           MoviesBuilderWidget(
             customHeight: 251,
             customWidth: 154,

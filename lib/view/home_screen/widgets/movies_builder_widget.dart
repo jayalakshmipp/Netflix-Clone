@@ -71,6 +71,7 @@ class MoviesBuilderWidget extends StatelessWidget {
                           Icons.more_vert,
                           color: ColorConstants.mainWhite
                         )
+                    
                       ],
                     ),
                   )
