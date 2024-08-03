@@ -3,6 +3,7 @@ import 'package:netflix_clone_app/dammy_db.dart';
 import 'package:netflix_clone_app/utils/constants/color_constants.dart';
 import 'package:netflix_clone_app/utils/constants/image_constants.dart';
 import 'package:netflix_clone_app/view/bottom_nav_screen/bottom_nav_screen.dart';
+import 'package:netflix_clone_app/view/global_widgets/user_name_card.dart';
 import 'package:netflix_clone_app/view/home_screen/home_screen.dart';
 
 class UserNameScreen extends StatelessWidget {
@@ -33,7 +34,7 @@ class UserNameScreen extends StatelessWidget {
           itemCount: DummyDb.usersList.length + 1,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              mainAxisSpacing: 10,
+             
               crossAxisSpacing: 10,
               mainAxisExtent: 130),
           itemBuilder: (context, index) {
@@ -43,23 +44,27 @@ class UserNameScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => BottomNavScreen())); //to return
+                          builder: (context) => BottomNavScreen())
+                  ); 
                 },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Image.asset(
-                      DummyDb.usersList[index]["imagePath"].toString(),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      DummyDb.usersList[index]["name"].toString(),
-                      style: TextStyle(color: Colors.white, fontSize: 13.25),
-                    )
-                  ],
-                ),
+                child: UserNameCard(imagePath:  DummyDb.usersList[index]["imagePath"].toString(), userName:  DummyDb.usersList[index]["name"].toString() ,),
+                
+                
+                // Column(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: [
+                //     Image.asset(
+                //       DummyDb.usersList[index]["imagePath"].toString(),
+                //     ),
+                //     const SizedBox(
+                //       height: 4,
+                //     ),
+                //     Text(
+                //       DummyDb.usersList[index]["name"].toString(),
+                //       style: TextStyle(color: Colors.white, fontSize: 13.25),
+                //     )
+                //   ],
+                // ),
               );
             } else {
               return InkWell(
